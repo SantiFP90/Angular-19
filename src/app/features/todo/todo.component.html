@@ -1,0 +1,22 @@
+<div class="todo-container">
+  <h1>Angular 19</h1>
+  <h1>To-Do List</h1>
+  <input
+    type="text"
+    [(ngModel)]="newTaskTitle"
+    placeholder="Add a new task"
+    (keyup.enter)="addTask()"
+  />
+  <p><strong>Completed Tasks: </strong>{{ completedCount() }}</p>
+  <ul>
+    @for (task of tasks(); track $index) {
+    <li>
+      <span [class.completed]="task.completed" (click)="toggleTask(task.id)">
+        {{ task.title }}
+      </span>
+      <button class="button-ready" (click)="toggleTask(task.id)">✅</button>
+      <button class="button-cancel" (click)="deleteTask(task.id)">❌</button>
+    </li>
+    }
+  </ul>
+</div>
