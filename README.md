@@ -58,3 +58,21 @@ Es útil cuando necesitas hacer cambios en la estructura interna de la señal, c
 - set: Establece el valor de la señal, reemplazando completamente su valor actual.
 
 - () => value: Puedes acceder al valor actual de una señal utilizando () sobre la señal.
+
+## @DEFER
+
+La directiva @defer es parte de Angular 19 y te permite retrasar la hidratación de los componentes hasta que sea necesario (por ejemplo, hasta que el usuario interactúe con el componente). Puedes usarla con la opción on idle o hydrate on interaction, lo que indica cuándo se debe hacer la hidratación de la aplicación en función de las interacciones del usuario o el estado de la CPU.
+
+# on idle:
+
+- La hidratación se realiza cuando el navegador está en estado "inactivo" (es decir, cuando no hay interacción activa del usuario).
+- Ideal para mejorar el rendimiento cargando componentes en segundo plano cuando la CPU tiene recursos disponibles.
+
+# hydrate on interaction:
+
+- La hidratación se realiza cuando el usuario interactúa con un componente, como hacer clic, desplazarse, etc.
+- Útil cuando quieres asegurarte de que los componentes que el usuario va a utilizar primero se hidraten de forma prioritaria.
+
+# defer until idle:
+
+- Similar a on idle, pero en lugar de comenzar la hidratación tan pronto como esté inactivo, espera hasta que el navegador esté en un estado más "libre" para evitar bloquear la ejecución de otras tareas.

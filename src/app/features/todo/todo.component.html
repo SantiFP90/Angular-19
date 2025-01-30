@@ -1,13 +1,13 @@
 <div class="todo-container">
   <h1>Angular 19</h1>
-  <h1>To-Do List</h1>
+  <h1>Lista de tareas</h1>
   <input
     type="text"
     [(ngModel)]="newTaskTitle"
-    placeholder="Add a new task"
+    placeholder="Agregar tarea..."
     (keyup.enter)="addTask()"
   />
-  <p><strong>Completed Tasks: </strong>{{ completedCount() }}</p>
+  <p><strong>Tareas completadas: </strong>{{ completedCount() }}</p>
   <ul>
     @for (task of tasks(); track $index) {
     <li>
@@ -20,3 +20,12 @@
     }
   </ul>
 </div>
+@defer(hydrate on idle) {
+<div class="stats">
+  <p><strong>Tareas totales:</strong> {{ tasks().length }}</p>
+  <p>
+    <strong>Porcentaje completado:</strong>
+    {{ (completedCount() / tasks().length) * 100 | number : "1.0-2" }}%
+  </p>
+</div>
+}
